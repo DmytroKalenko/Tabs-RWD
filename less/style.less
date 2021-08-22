@@ -1,7 +1,7 @@
 html,
 body {
     box-sizing: border-box;
-
+    display: flex;
 }
 
 a {
@@ -21,4 +21,35 @@ button {
     padding: 0;
     margin: 0;
     cursor: pointer;
+}
+
+
+.loyout {
+    padding: 2rem;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid;
+
+    .tabs__title {
+        display: flex;
+
+        &>div {
+            padding: 0.5rem 1rem;
+            border: 1px solid;
+            cursor: pointer;
+
+            &.Active {
+                border-bottom: none;
+            }
+        }
+
+
+    }
+
+    .--item {
+        display: none;
+        background-color: aliceblue;
+        border: 1px solid;
+        border-top: none;
+    }
 }
