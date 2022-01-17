@@ -64,12 +64,10 @@
 
 html,
 body {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
+   
+    font-size: 10px;
     font-family: 'Roboto', sans-serif;
+
 }
 
 a {
@@ -90,55 +88,153 @@ button {
     margin: 0;
     cursor: pointer;
 }
+@laptop: ~"(min-width: 979px)";
+@text_color: black;
+@primary_color: #ea006a;
+// tabs on custom CMS page
 
-
-.loyout {
-    padding: 2rem;
-    width: 85%;
-    display: block;
-    border: 1px solid;
-
-    .tabs__title {
-        display: flex;
-        @media (max-width: 978px){
-            flex-direction: column;
-        }
-        &>div {
-            padding: 0.5rem 1rem;
-            border: 1px solid #e0e0e0;
-            cursor: pointer;
-            font-size: 2rem;
-            text-transform: capitalize;
-            position: relative;
-            top: 1px;
-            background-color: white;
-            transition: all 0.5s;
-            color: gray;
-            &.Active,
-            &:hover {
-                @media (min-width: 978px){
-                    border-bottom: none;
-                }
-                color: rgb(0, 0, 0);
-                
-            }
-        }
-        &>div + div{
-            border-left: none;
-            @media (max-width: 978px){
-                border-left: 1px solid #e0e0e0;
-                border-top: none;
-            }
-        }
-
-    }
-
-    .--item {
-        display: none;   
-        border: 1px solid #e0e0e0;
-        padding: 2rem;
-        font-size: 2rem;
-        text-transform: capitalize;
-     
-    }
+.wrapper{
+    max-width: 1170px;
+    margin: 0 auto;
+  
+    font-size: 1.3rem;
+    position: relative;
 }
+
+.cms_content{
+    text-align: center;
+    font-size: 1.6rem;
+    p{
+      line-height: 1.5;
+    }
+    h3{
+      font-size: 1.6rem;
+      color: @text_color;
+      margin: 2rem 0 0 0;
+    }
+    .content_baner__top{
+      position: relative;
+      display: block;
+      margin-bottom: 2rem;
+      @media @laptop{
+        margin-bottom: 4rem;
+      }
+      h1{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        width: 100%;
+        text-align: center;
+        font-size: clamp(1.6rem, 0.3636rem + 3.8636vw, 5rem);
+        border: none;
+      }
+  
+    }
+    .tabs{
+      margin: 4rem 0 ;
+      .tabs__titles{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        @media @laptop{
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        .title_item{
+          background: #efefef;
+          border-bottom: 1px solid #FFFFFF;
+          transition: all .5s;
+          cursor: pointer;
+          display: flex;
+          align-content: center;
+          align-items: center;
+          width: 100%;
+          padding:1rem;
+          @media  @laptop{
+            width: 16rem;
+            height: 17rem;
+            overflow: hidden;
+            flex-direction: column;
+            justify-content: center;
+            margin: .1rem;
+          }
+          &:after{
+            content:'\F0D7';
+            font-family: FontAwesome;
+            position: relative;
+            margin-left: auto;
+            right: .5rem;
+            width: 2.5rem;
+            @media @laptop{
+              content:none;
+            }
+          }
+          .item_icon{
+            max-width: 10rem;
+            height: 7rem;
+            img{
+              max-width: 10rem;
+              max-height: 7rem;
+              @media @laptop{
+                margin: 0 auto;
+                display: block;
+              }
+            }
+          }
+  
+          &.active{
+            &:after{
+              content:'\F0D8';
+              @media @laptop{
+                content:none;
+              }
+            }
+          }
+  
+          &.active, &:hover{
+            background: @primary_color;
+            .title{
+              color: #FFFFFF;
+            }
+          }
+          .title{
+            margin: 0 0 0 2rem ;
+            font-family: "Baloo Paaji", "Arial", cursive;
+            text-align: left;
+            @media  @laptop{
+              padding: 0 .5rem;
+              margin: 1rem 0 0;
+            }
+          }
+  
+        }
+      }
+      .content_item{
+        display: none;
+        width: 100%;
+        text-align: center;
+        &.active{
+          display:block;
+        }
+        .item__title{
+          font-weight: 700;
+          font-family: "Baloo Paaji", "Arial", cursive;
+          font-size: clamp(1.6rem, 0.9366rem + 3.3171vw, 5rem);
+          margin: 2rem 0;
+          @media @laptop{
+            margin-top: 7rem;
+          }
+        }
+        .item__text{
+          line-height: 1.5;
+          li{
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
